@@ -21,7 +21,7 @@ import ninja.Results;
 
 import com.google.inject.Singleton;
 
-
+//testing to make sure it's setup right on my end
 @Singleton
 public class ApplicationController {
 
