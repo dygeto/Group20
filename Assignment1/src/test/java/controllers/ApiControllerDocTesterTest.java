@@ -15,14 +15,11 @@
  */
 
 package controllers;
-
-
-import org.junit.Test;
-
+import resources.myCard;
 import ninja.NinjaDocTester;
 import org.doctester.testbrowser.Request;
 import org.doctester.testbrowser.Response;
-import org.hamcrest.CoreMatchers;
+import org.junit.Test;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertThat;
 
@@ -50,6 +47,14 @@ public class ApiControllerDocTesterTest extends NinjaDocTester {
 
         assertThat(response.payload, containsString("Aces Up"));
         assertThat(response.payload, containsString("columnOfCards"));
+    }
+    @Test
+    public void testCardCreation(){
+        myCard Cardy;
+        Cardy = new myCard();
+        Cardy.setRank('A');
+        assert(Cardy.getRank() == 'A');
+
     }
 
 }
