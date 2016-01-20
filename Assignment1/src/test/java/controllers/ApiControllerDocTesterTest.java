@@ -18,7 +18,7 @@ package controllers;
 
 
 import org.junit.Test;
-
+import Card.java;
 import ninja.NinjaDocTester;
 import org.doctester.testbrowser.Request;
 import org.doctester.testbrowser.Response;
@@ -50,6 +50,12 @@ public class ApiControllerDocTesterTest extends NinjaDocTester {
 
         assertThat(response.payload, containsString("Aces Up"));
         assertThat(response.payload, containsString("columnOfCards"));
+    }
+    @Test
+    public void testCardCreation(){
+        Card Cardy = new Cardy();
+        assertThat(Cardy.getRank() == 'A');
+
     }
 
 }
