@@ -32,8 +32,14 @@ public class deck {
 
     }
     public void shuffle(){
-
+        int rand;
+        myCard temp;
         for(int i = 0; i <52; i++){
+
+            rand = (int)Math.random()*51;
+            temp = cards[rand];
+            cards[rand] = cards[i];
+            cards[i] = temp;
 
         }
     }
