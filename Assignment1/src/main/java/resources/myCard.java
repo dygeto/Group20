@@ -4,19 +4,19 @@
  */
 package resources;
 public class myCard {
-    private char rank;
+    private int rank;
     private char suit;
     public myCard()
     {
-        this.rank = ' ';
+        this.rank = 0;
         this.suit = ' ';
     }
-    public myCard(char x, char y)
+    public myCard(int x, char y)
     {
         this.setRank(x);
         this.setSuit(y);
     }
-    public void setRank(char x){
+    public void setRank(int x){
         this.rank = x;
     }
     public void setSuit(char x){
