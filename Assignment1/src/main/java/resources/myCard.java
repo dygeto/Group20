@@ -22,7 +22,7 @@ public class myCard {
     public void setSuit(char x){
         this.suit = x;
     }
-    public char getRank(){
+    public int getRank(){
         return this.rank;
     }
     public char getSuit(){
