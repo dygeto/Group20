@@ -18,7 +18,7 @@ package controllers;
 
 
 import org.junit.Test;
-import Card.java;
+import main.Card.java;
 import ninja.NinjaDocTester;
 import org.doctester.testbrowser.Request;
 import org.doctester.testbrowser.Response;
@@ -53,7 +53,8 @@ public class ApiControllerDocTesterTest extends NinjaDocTester {
     }
     @Test
     public void testCardCreation(){
-        Card Cardy = new Cardy();
+        Card Cardy = new Card();
+        Cardy.setRank('A');
         assertThat(Cardy.getRank() == 'A');
 
     }

@@ -5,7 +5,11 @@
 public class Card {
     private char rank;
     private char suit;
-
+    Card(char x, char y)
+    {
+        this.setRank(x);
+        this.setSuit(y);
+    }
     public void setRank(char x){
         this.rank = x;
     }
