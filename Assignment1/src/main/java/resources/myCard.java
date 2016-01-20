@@ -2,10 +2,16 @@
  * Created by dominic on 1/19/16.
  * For our deck
  */
-public class Card {
+package resources;
+public class myCard {
     private char rank;
     private char suit;
-    Card(char x, char y)
+    public myCard()
+    {
+        this.rank = ' ';
+        this.suit = ' ';
+    }
+    public myCard(char x, char y)
     {
         this.setRank(x);
         this.setSuit(y);
