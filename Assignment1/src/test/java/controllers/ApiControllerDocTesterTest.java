@@ -16,7 +16,7 @@
 
 package controllers;
 import resources.myCard;
-
+import resources.deck;
 import ninja.NinjaDocTester;
 import org.doctester.testbrowser.Request;
 import org.doctester.testbrowser.Response;
@@ -25,7 +25,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.*;
 public class ApiControllerDocTesterTest extends NinjaDocTester {
 
     String URL_INDEX = "/";
@@ -137,4 +137,54 @@ public class ApiControllerDocTesterTest extends NinjaDocTester {
 
     }
 
+    @Test
+    public void testDeck(){
+        deck myDeck = new deck();
+        myDeck.cards[0] = new myCard(2,'c');
+    }
+    @Test
+    public void testCardInDeckClubs(){
+        deck myDeck = new deck();
+        assertEquals(myDeck.cards[0].getRank(),1);
+        assertEquals(myDeck.cards[0].getSuit(),'c');
+        assertEquals(myDeck.cards[1].getRank(),2);
+        assertEquals(myDeck.cards[0].getSuit(),'c');
+        for(int i = 0; i<13; i++){
+            assertEquals(myDeck.cards[i].getRank(),i+1);
+            assertEquals(myDeck.cards[i].getSuit(),'c');
+        }
+    }
+    @Test
+    public void testCardAndRankSpades(){
+        deck myDeck = new deck();
+        int myRank = 1;
+        for(int i = 13; i<26; i++){
+            assertEquals(myDeck.cards[i].getRank(),myRank);
+            assertEquals(myDeck.cards[i].getSuit(),'s');
+            myRank ++;
+        }
+    }
+
+    @Test
+    public void testCardAndRankHearts(){
+        deck myDeck = new deck();
+        int myRank = 1;
+        for(int i = 26; i<39; i++){
+            assertEquals(myDeck.cards[i].getRank(),myRank);
+            assertEquals(myDeck.cards[i].getSuit(),'h');
+            myRank ++;
+        }
+    }
+
+    @Test
+    public void testCardAndRankDiamonds(){
+        deck myDeck = new deck();
+        int myRank = 1;
+        for(int i = 39; i<52; i++){
+            assertEquals(myDeck.cards[i].getRank(),myRank);
+            assertEquals(myDeck.cards[i].getSuit(),'d');
+            myRank ++;
+        }
+    }
 }
+
