@@ -22,6 +22,7 @@ import org.doctester.testbrowser.Request;
 import org.doctester.testbrowser.Response;
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
@@ -84,23 +85,55 @@ public class ApiControllerDocTesterTest extends NinjaDocTester {
         myCard otherCard;
         otherCard = new myCard();
 
+
         curCard.setRank(13);
         assert(curCard.getRank() == 13);
-
         otherCard.setRank(12);
         assert(otherCard.getRank() == 12);
+        if (curCard.compareRank(otherCard) == 3)
+        {
+            System.out.println("Error: something wrong with comparison");
+        }
 
+        //Test if current card rank greater than other card rank
+        curCard.setRank(13);
+        assert(curCard.getRank() == 13);
+        otherCard.setRank(12);
+        assert(otherCard.getRank() == 12);
         curCard.compareRank(otherCard);
         assert(curCard.compareRank(otherCard) == 2);
 
+        //Test if current card rank equal to the other card rank
+        curCard.setRank(13);
+        assert(curCard.getRank() == 13);
+        otherCard.setRank(13);
+        assert(otherCard.getRank() == 13);
+        curCard.compareRank(otherCard);
+        assert(curCard.compareRank(otherCard) == 0);
+
+        //Test if current card rank less than the other card rank
+        curCard.setRank(11);
+        assert(curCard.getRank() == 11);
+        otherCard.setRank(12);
+        assert(otherCard.getRank() == 12);
+        curCard.compareRank(otherCard);
+        assert(curCard.compareRank(otherCard) == 1);
+
+        //Test if current card suit matches other card suit
         curCard.setSuit('D');
         assert(curCard.getSuit() == 'D');
-
         otherCard.setSuit('D');
         assert(otherCard.getSuit() == 'D');
-
         curCard.compareSuit(otherCard);
         assertTrue(curCard.compareSuit(otherCard));
+
+        //Test if current card suit doesn't match other card suit
+        curCard.setSuit('D');
+        assert(curCard.getSuit() == 'D');
+        otherCard.setSuit('H');
+        assert(otherCard.getSuit() == 'H');
+        curCard.compareSuit(otherCard);
+        assertFalse(curCard.compareSuit(otherCard));
 
     }
 
