@@ -54,9 +54,27 @@ public class ApiControllerDocTesterTest extends NinjaDocTester {
     public void testCardCreation(){
         myCard Cardy;
         Cardy = new myCard();
-        Cardy.setRank('A');
-        assert(Cardy.getRank() == 'A');
-
+        assert(Cardy.getRank() == ' ');
+    }
+    @Test
+    public void testCardRankSettingGetting(){
+        myCard Cardy;
+        Cardy = new myCard();
+        Cardy.setRank(3);
+        assert(Cardy.getRank() == 3);
+    }
+    @Test
+    public void testCardSuitSettingGetting(){
+        myCard Cardy;
+        Cardy = new myCard();
+        Cardy.setSuit('H');
+        assert(Cardy.getSuit() == 'H');
+    }
+    public void testCardConstructor(){
+        myCard Cardy;
+        Cardy = new myCard(3, 'H');
+        assert(Cardy.getSuit() == 'H');
+        assert(Cardy.getRank() == 3);
     }
 
     @Test
