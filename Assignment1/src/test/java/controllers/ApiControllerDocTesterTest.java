@@ -16,18 +16,20 @@
 
 package controllers;
 import resources.myCard;
+
 import ninja.NinjaDocTester;
 import org.doctester.testbrowser.Request;
 import org.doctester.testbrowser.Response;
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class ApiControllerDocTesterTest extends NinjaDocTester {
-    
+
     String URL_INDEX = "/";
     String URL_ACES_UP = "/AcesUp";
-    
+
     @Test
     public void testGetIndex() {
 
@@ -54,6 +56,33 @@ public class ApiControllerDocTesterTest extends NinjaDocTester {
         Cardy = new myCard();
         Cardy.setRank('A');
         assert(Cardy.getRank() == 'A');
+
+    }
+
+    @Test
+    public void testCardComparison(){
+        myCard curCard;
+        curCard = new myCard();
+        myCard otherCard;
+        otherCard = new myCard();
+
+        curCard.setRank(13);
+        assert(curCard.getRank() == 13);
+
+        otherCard.setRank(12);
+        assert(otherCard.getRank() == 12);
+
+        curCard.compareRank(otherCard);
+        assert(curCard.compareRank(otherCard) == 2);
+
+        curCard.setSuit('D');
+        assert(curCard.getSuit() == 'D');
+
+        otherCard.setSuit('D');
+        assert(otherCard.getSuit() == 'D');
+
+        curCard.compareSuit(otherCard);
+        assertTrue(curCard.compareSuit(otherCard));
 
     }
 

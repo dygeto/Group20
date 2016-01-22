@@ -1,4 +1,4 @@
-package controllers;
+package resources;
 
 /**
  * Created by erinsullens on 1/19/16.
