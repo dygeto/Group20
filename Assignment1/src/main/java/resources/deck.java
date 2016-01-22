@@ -1,13 +1,13 @@
-package controllers;
+package resources;
 
 /**
  * Created by erinsullens on 1/19/16.
  */
 public class deck {
-    myCard[] cards;
+    public myCard[] cards;
     int rank = 1;
 
-    deck(){
+   public deck(){
         cards = new myCard[52];
 
         for(int i = 0; i<13; i++){
