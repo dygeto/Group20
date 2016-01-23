@@ -5,6 +5,7 @@ package resources;
  */
 public class deck {
 
+    
     public myCard[] cards;
     int rank = 1;
 
