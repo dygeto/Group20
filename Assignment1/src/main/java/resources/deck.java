@@ -43,5 +43,20 @@ public class deck {
 
         }
     }
+    public myCard[] deal(){
+        myCard[] dealtCards = new myCard[4];
+        int fourCards = 0;
+        for(int i = 0; i<52; i++){
+            if(!this.cards[i].hasBeenPlayed){
+                dealtCards[fourCards] = this.cards[i];
+                fourCards++;
+            }
+            if(fourCards==4){
+                break;
+            }
+        }
+
+        return dealtCards;
+    }
 
 }

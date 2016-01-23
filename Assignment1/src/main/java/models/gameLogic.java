@@ -1,11 +1,11 @@
 package models;
 
-public class acesUp {
+public class gameLogic {
     private int winCount;
     private int score;
     myStack[] cardStack; //cardStack will be the four spots that cards are dealt to, not yet made
 
-    acesUp() {
+    gameLogic() {
         winCount = 0;
         score = 0;
         cardStack = new myStack[3];
@@ -15,12 +15,12 @@ public class acesUp {
     public void winCheck() {
         int aceCount = 0;
         for (int i = 0; i < 4; i++) {
-            if (cardStack[i].getCardRank() == 'A' && cardStack[i].getSize() == 1) {
+            if (cardStack[i].getRank() == 'A' && cardStack[i].getSize() == 1) {
                 aceCount++;
             }
         }
         if (aceCount == 4) {
-            System.out.ln("You win!");
+            System.out.println("You win!");
             winCount++;
         }
     }
