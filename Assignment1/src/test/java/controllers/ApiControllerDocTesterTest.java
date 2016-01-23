@@ -186,5 +186,18 @@ public class ApiControllerDocTesterTest extends NinjaDocTester {
             myRank ++;
         }
     }
+    @Test
+    public void testHasBeenPlayed(){
+        deck myDeck = new deck();
+        assertEquals(myDeck.cards[0].hasBeenPlayed, false);
+    }
+    @Test
+    public void testDeal(){
+        deck myDeck = new deck();
+        myCard[] dealtCards;
+        dealtCards = new myCard[4];
+        dealtCards = myDeck.deal();
+        assertNotEquals(dealtCards[0],null );
+    }
 }
 
