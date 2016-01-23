@@ -7,15 +7,18 @@ package resources;
 public class myCard {
     private int rank;
     private char suit;
+    public boolean hasBeenPlayed;
     public myCard()
     {
         this.rank = 0;
         this.suit = ' ';
+        hasBeenPlayed = false;
     }
     public myCard(int x, char y)
     {
         this.setRank(x);
         this.setSuit(y);
+        this.hasBeenPlayed = false;
     }
 
 

@@ -4,10 +4,10 @@ package resources;
  * Created by erinsullens on 1/19/16.
  */
 public class deck {
-    myCard[] cards;
+    public myCard[] cards;
     int rank = 1;
 
-    deck(){
+   public deck(){
         cards = new myCard[52];
 
         for(int i = 0; i<13; i++){
@@ -42,6 +42,21 @@ public class deck {
             cards[i] = temp;
 
         }
+    }
+    public myCard[] deal(){
+        myCard[] dealtCards = new myCard[4];
+        int fourCards = 0;
+        for(int i = 0; i<52; i++){
+            if(!this.cards[i].hasBeenPlayed){
+                dealtCards[fourCards] = this.cards[i];
+                fourCards++;
+            }
+            if(fourCards==4){
+                break;
+            }
+        }
+
+        return dealtCards;
     }
 
 }
