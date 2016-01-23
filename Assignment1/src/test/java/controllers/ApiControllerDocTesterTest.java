@@ -85,55 +85,63 @@ public class ApiControllerDocTesterTest extends NinjaDocTester {
         myCard otherCard;
         otherCard = new myCard();
 
+        //Tests for comparison function:
+        //Returns 2 if curCard > otherCard, 0 if curCard = otherCard, 1 if curCard < otherCard, 3 if comparison failed
+        for(int i=13; i<26; i++) {
+            curCard.setRank(i);
+            assert (curCard.getRank() == i);
 
-        curCard.setRank(13);
-        assert(curCard.getRank() == 13);
-        otherCard.setRank(12);
-        assert(otherCard.getRank() == 12);
-        if (curCard.compareRank(otherCard) == 3)
-        {
-            System.out.println("Error: something wrong with comparison");
+            //Test if current card rank is greater than other card rank
+            otherCard.setRank(i-1);
+            assert(otherCard.getRank() == i-1);
+            curCard.compareRank(otherCard);
+            assert(curCard.compareRank(otherCard) != 3); //something wrong with compareRank() function
+            assert(curCard.compareRank(otherCard) == 2);
+
+
+            //Test if current card rank equal to the other card rank
+            otherCard.setRank(i);
+            assert (otherCard.getRank() == i);
+            curCard.compareRank(otherCard);
+            assert(curCard.compareRank(otherCard) != 3); //something wrong with compareRank() function
+            assert (curCard.compareRank(otherCard) == 0);
+
+            //Test if current card rank is less than the other card rank
+            otherCard.setRank(i+1);
+            assert (otherCard.getRank() == i+1);
+            curCard.compareRank(otherCard);
+            assert(curCard.compareRank(otherCard) != 3); //something wrong with compareRank() function
+            assert (curCard.compareRank(otherCard) == 1);
+
         }
 
-        //Test if current card rank greater than other card rank
-        curCard.setRank(13);
-        assert(curCard.getRank() == 13);
-        otherCard.setRank(12);
-        assert(otherCard.getRank() == 12);
-        curCard.compareRank(otherCard);
-        assert(curCard.compareRank(otherCard) == 2);
 
-        //Test if current card rank equal to the other card rank
-        curCard.setRank(13);
-        assert(curCard.getRank() == 13);
-        otherCard.setRank(13);
-        assert(otherCard.getRank() == 13);
-        curCard.compareRank(otherCard);
-        assert(curCard.compareRank(otherCard) == 0);
+        //Test if current card suit does or doesn't match other card suit
+        char[] suitsArr = {'S', 'H', 'D', 'C'};
+        for(int i=0; i<4; i++) {
+            curCard.setSuit(suitsArr[i]);
+            assert (curCard.getSuit() == suitsArr[i]);
+            otherCard.setSuit(suitsArr[i]);
+            assert (otherCard.getSuit() == suitsArr[i]);
+            curCard.compareSuit(otherCard);
+            assertTrue(curCard.compareSuit(otherCard));
 
-        //Test if current card rank less than the other card rank
-        curCard.setRank(11);
-        assert(curCard.getRank() == 11);
-        otherCard.setRank(12);
-        assert(otherCard.getRank() == 12);
-        curCard.compareRank(otherCard);
-        assert(curCard.compareRank(otherCard) == 1);
-
-        //Test if current card suit matches other card suit
-        curCard.setSuit('D');
-        assert(curCard.getSuit() == 'D');
-        otherCard.setSuit('D');
-        assert(otherCard.getSuit() == 'D');
-        curCard.compareSuit(otherCard);
-        assertTrue(curCard.compareSuit(otherCard));
-
-        //Test if current card suit doesn't match other card suit
-        curCard.setSuit('D');
-        assert(curCard.getSuit() == 'D');
-        otherCard.setSuit('H');
-        assert(otherCard.getSuit() == 'H');
-        curCard.compareSuit(otherCard);
-        assertFalse(curCard.compareSuit(otherCard));
+            if (i == 0) { //Put if statement, so it doesn't go over the suitsArr limit
+                curCard.setSuit(suitsArr[i]);
+                assert (curCard.getSuit() == suitsArr[i]);
+                otherCard.setSuit(suitsArr[i+1]);
+                assert (otherCard.getSuit() == suitsArr[i+1]);
+                curCard.compareSuit(otherCard);
+                assertFalse(curCard.compareSuit(otherCard));
+            } else {
+                curCard.setSuit(suitsArr[i]);
+                assert (curCard.getSuit() == suitsArr[i]);
+                otherCard.setSuit(suitsArr[i-1]);
+                assert (otherCard.getSuit() == suitsArr[i-1]);
+                curCard.compareSuit(otherCard);
+                assertFalse(curCard.compareSuit(otherCard));
+            }
+        }
 
     }
 
@@ -142,6 +150,7 @@ public class ApiControllerDocTesterTest extends NinjaDocTester {
         deck myDeck = new deck();
         myDeck.cards[0] = new myCard(2,'c');
     }
+
     @Test
     public void testCardInDeckClubs(){
         deck myDeck = new deck();
@@ -154,6 +163,7 @@ public class ApiControllerDocTesterTest extends NinjaDocTester {
             assertEquals(myDeck.cards[i].getSuit(),'c');
         }
     }
+
     @Test
     public void testCardAndRankSpades(){
         deck myDeck = new deck();
@@ -186,6 +196,7 @@ public class ApiControllerDocTesterTest extends NinjaDocTester {
             myRank ++;
         }
     }
+
     @Test
     public void testHasBeenPlayed(){
         deck myDeck = new deck();
