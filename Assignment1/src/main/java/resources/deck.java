@@ -4,6 +4,8 @@ package resources;
  * Created by erinsullens on 1/19/16.
  */
 public class deck {
+
+    
     public myCard[] cards;
     int rank = 1;
 
